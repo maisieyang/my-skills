@@ -54,11 +54,11 @@ docs/         → Setup guides for different tools
 
 | skill | 干什么 | 上游为何没有 |
 |---|---|---|
-| `reverse-spec` | **本 fork 的核心**：逆向对标项目 → 三镜头 REFERENCE（§1-§4 目录树 + 数据流 + 核心要素）+ §5 build 路线图 | 上游 spec-driven 是正向需求→代码，方向相反；planning-and-task-breakdown 是任务级，不是项目级 map |
+| `reverse-spec` | **本 fork 的核心**：逆向对标项目 → 三镜头 REFERENCE（§1-§4 目录树 + 数据流 + 核心要素）+ §5 有序 build 模块拆分 | 上游 spec-driven 是正向需求→代码，方向相反；planning-and-task-breakdown 是任务级，不是项目级 map |
 | `eval` ·**draft** | 概率性模型行为的回归基线（test⊥eval）。还在入门，留着用、未打磨 | 上游整套无"概率行为评估"概念 |
 | `debrief` ·**draft** | 每做完一个模块沉淀一份认知文档（§回顾）。未打磨 | 上游 documentation-and-adrs 是记录，不是学习提取 |
 
-> **范围收敛（2026-06-14）**：原 `align`（模块设计对齐）和 `/learn-module`（编排命令）已删——模块**设计**交给上游 interview-me（想清楚）+ plan（拆解），**实现**交给 TDD 等上游手艺，不再自定义编排。`roadmap` 早先已并入 reverse-spec（§5：首次排布在 reverse-spec，反复维护在每模块回顾后手动更新）。
+> **范围收敛（2026-06-14）**：原 `align`（模块设计对齐）和 `/learn-module`（编排命令）已删——模块**设计**交给上游 interview-me（想清楚）+ plan（拆解），**实现**交给 TDD 等上游手艺，不再自定义编排。`roadmap` 早先已并入 reverse-spec 的 §5（把 §3 切成有序 build 模块、按依赖排，和 §1-§4 一样冻结；不追踪进度，状态/选下一个去 `tasks/`、git）。
 
 ## 没有自定义命令
 
