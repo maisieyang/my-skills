@@ -330,6 +330,23 @@ See [docs/skill-anatomy.md](docs/skill-anatomy.md) for the format specification 
 
 ---
 
+## Fork additions — learn-by-rebuilding（本 fork 的私有扩展）
+
+> 这是 [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) 的 fork。上游 24 个通用 skill 原样保留并随 merge 更新；下面是我在其上扩展的一套方法论，用于**通过重建一个优秀的对标开源项目，快速成为某领域专家**。
+
+- **3 个新 skill**（均可 `/名字` 直接调或自动触发）：
+  - `reverse-spec` — **核心**：逆向对标项目，产出三镜头认知地图（§1-§4 目录树 + 数据流 + 核心要素）+ §5 build 路线图
+  - `eval` —（draft）概率行为的回归基线（test ⊥ eval）
+  - `debrief` —（draft）每做完一个模块沉淀一份认知文档
+- 模块设计/实现直接用上游 **interview-me + plan + TDD** 等手艺，无自定义编排命令
+- 详见 [CLAUDE.md](./CLAUDE.md) 的 "Fork 增量" 一节。
+
+只扩展、不改上游 skill —— `git fetch upstream && git merge` 即可吃上游更新。
+
+**已知待办**：eval / debrief 标为 draft，等更多实战经历再打磨；"老模块回溯补文档"路径尚未固化。
+
+---
+
 ## License
 
 MIT - use these skills in your projects, teams, and tools.
