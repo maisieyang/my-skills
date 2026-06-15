@@ -44,13 +44,32 @@ docs/         → Setup guides for different tools
 
 ---
 
-# Fork 增量 — learn-by-rebuilding 方法论（maisieyang）
+# Fork 增量 —— 把"靠重建吃透一个领域"的方法编码成 skill
 
-> 这是本 fork 在上游 agent-skills 之上的私有扩展。上游(`upstream` = addyosmani/agent-skills)的 24 个通用 skill 原样保留、原地使用、随 merge 自动更新；下面是我加的、上游没有的东西。一条纪律：**只编码基石没有的**——上游有的能力一律装配、不重写。
+> 上游 agent-skills（`upstream` = addyosmani/agent-skills）给的是通用 SWE 手艺——spec / plan / TDD / review……它缺的是**一套进入并吃透一个陌生领域的方法**。这个 fork 只补这一件：
+>
+> **learn-by-rebuilding** —— 选一个领域里最好的对标项目，从零重建它，再把原则蒸馏下来。*What I cannot create, I do not understand.*
+>
+> 贯穿始终一条纪律：**只编码基石没有的**。上游 24 个通用 skill 原样保留、原地用、随 merge 自动更新；下面是上游没有、我加的那几样。
 
-**一句话**：通过重建一个优秀的对标开源项目，快速成为某领域专家。*What I cannot create, I do not understand.*
+## 方法长什么样：三步，落进三个 skill
 
-## 我加的 3 个新 skill（核心是 reverse-spec）
+```
+ study  ──►  build  ──►  distill
+   │           │            │
+reverse-spec  interview-me  debrief
+→ REFERENCE   + plan → TDD  → 模块认知文档
+(一次·冻结)              横切：碰概率行为 → eval
+```
+
+- **study** —— `reverse-spec` 把对标项目逆向成一张冻结的认知地图 `REFERENCE`（三镜头 + §5 有序模块拆分），防玩具化的底图。
+- **build** —— 每个模块用上游 `interview-me`（想清楚）+ `plan`（拆解）设计，`TDD` 实现。**全是上游手艺，我不重写。**
+- **distill** —— `debrief` 把每个做完的模块沉淀成一篇认知文档。
+- **横切** —— 改动碰概率行为（prompt / memory）→ `eval` 做回归基线（确定性测试证明不了这层）。
+
+所以这个 fork 真正新增的，只有 study / distill / eval 这三处上游缺的能力；设计与实现全站在上游肩上。
+
+## 我加的 3 个 skill（核心是 reverse-spec）
 
 | skill | 干什么 | 上游为何没有 |
 |---|---|---|
@@ -58,21 +77,11 @@ docs/         → Setup guides for different tools
 | `eval` ·**draft** | 概率性模型行为的回归基线（test⊥eval）。还在入门，留着用、未打磨 | 上游整套无"概率行为评估"概念 |
 | `debrief` ·**draft** | 每做完一个模块沉淀一份认知文档（§回顾）。未打磨 | 上游 documentation-and-adrs 是记录，不是学习提取 |
 
-> **范围收敛（2026-06-14）**：原 `align`（模块设计对齐）和 `/learn-module`（编排命令）已删——模块**设计**交给上游 interview-me（想清楚）+ plan（拆解），**实现**交给 TDD 等上游手艺，不再自定义编排。`roadmap` 早先已并入 reverse-spec 的 §5（把 §3 切成有序 build 模块、按依赖排，和 §1-§4 一样冻结；不追踪进度，状态/选下一个去 `tasks/`、git）。
-
 ## 没有自定义命令
 
-模块循环 = `/reverse-spec`（一次，建 REFERENCE + §5）→ 每模块：interview-me + plan（设计）→ TDD（实现）→ eval（碰概率行为时，draft）→ debrief（沉淀文档，draft）。全是可直接 `/名字` 调或自动触发的 skill，不另包编排命令（壳无编排价值即冗余）。
+模块循环全是可直接 `/名字` 调或自动触发的 skill，不另包编排命令（壳无编排价值即冗余）。
 
-## 已知待办
+## 范围收敛 & 待办
 
-- eval / debrief 标为 draft，等更多实战经历再打磨。
-- 老模块"回溯补文档"路径（debrief 假设有设计阶段判断可证伪；无则降级，见 debrief 的「前提」一节）。
-
-## 消费项目要提供的绑定
-
-skill 是通用的，项目特定值（测试命令、质量门、对标 spec 路径、eval substrate 入口）由消费项目的 CLAUDE.md 提供一张绑定表。样板见 `build-my-own-harness/CLAUDE.md`。
-
-## 设计推理出处
-
-[../five-position-model.md](../five-position-model.md)（五位置统一模型）· [../anthropic-anaysize.md](../anthropic-anaysize.md) · [finance-skills/TWO-LAYERS.md](../finance-skills/TWO-LAYERS.md)
+- **收敛（2026-06-14）**：`align`、`/learn-module` 已删（设计交上游 interview-me + plan、实现交 TDD，不再自定义编排）；`roadmap` 并入 reverse-spec 的 §5。
+- **draft**：`eval` / `debrief` 等更多实战再打磨；老模块"回溯补文档"路径见 debrief 的「前提」一节。
