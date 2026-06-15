@@ -5,7 +5,7 @@ description: 改动触碰 prompt / memory / 概率性模型行为时，在决策
 
 # /eval — 概率行为的回归基线
 
-> ⚠️ **draft**：还没经过 reverse-spec 那样的实测打磨。我对 eval 还在入门——先用着，等积累了实战经历再迭代。
+> ⚠️ **draft**：未经实测打磨。
 
 > 适用条件：项目包含概率性模型行为（LLM 调用、prompt、memory 等）。纯确定性项目没有这一层。
 

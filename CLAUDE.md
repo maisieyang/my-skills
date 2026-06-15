@@ -67,7 +67,7 @@ docs/         → Setup guides for different tools
 ## 已知待办
 
 - eval / debrief 标为 draft，等更多实战经历再打磨。
-- 老模块"回溯补文档"路径（debrief 假设有设计阶段判断可证伪；样例见 `build-my-own-harness/docs/modules/agent-loop.md`）。
+- 老模块"回溯补文档"路径（debrief 假设有设计阶段判断可证伪；无则降级，见 debrief 的「前提」一节）。
 
 ## 消费项目要提供的绑定
 
